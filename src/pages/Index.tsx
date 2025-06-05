@@ -9,6 +9,7 @@ import { Plus, Clock, CheckCircle, AlertCircle, DollarSign, Users } from "lucide
 import ProjectCard from "@/components/ProjectCard";
 import CreateProjectModal from "@/components/CreateProjectModal";
 import MilestoneTracker from "@/components/MilestoneTracker";
+import WalletButton from "@/components/WalletButton";
 
 const Index = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -80,6 +81,7 @@ const Index = () => {
                 <Plus className="w-4 h-4 mr-2" />
                 New Project
               </Button>
+              <WalletButton />
             </div>
           </div>
         </div>
