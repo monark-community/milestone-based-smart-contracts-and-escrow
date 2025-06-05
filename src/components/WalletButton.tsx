@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Wallet, User, Settings, LogOut, Copy } from "lucide-react";
 
 const WalletButton = () => {
@@ -48,7 +48,6 @@ const WalletButton = () => {
         <Button variant="outline" className="h-10 px-3">
           <div className="flex items-center space-x-2">
             <Avatar className="h-6 w-6">
-              <AvatarImage src="/placeholder.svg" />
               <AvatarFallback className="text-xs bg-blue-100">
                 <User className="w-3 h-3 text-blue-600" />
               </AvatarFallback>
