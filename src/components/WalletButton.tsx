@@ -14,7 +14,8 @@ import { Wallet, User, Settings, LogOut, Copy } from "lucide-react";
 
 const WalletButton = () => {
   const [isConnected, setIsConnected] = useState(true); // Mock connected state
-  const walletAddress = "0x1234...5678"; // Mock wallet address
+  const walletAddress = "0x1234567890abcdef1234567890abcdef12345678"; // Full mock wallet address
+  const username = "JohnDoe"; // Mock username
   const userBalance = "1,234.56"; // Mock balance
 
   const handleConnect = () => {
@@ -26,8 +27,11 @@ const WalletButton = () => {
   };
 
   const copyAddress = () => {
-    navigator.clipboard.writeText("0x1234567890abcdef1234567890abcdef12345678");
+    navigator.clipboard.writeText(walletAddress);
   };
+
+  // Format wallet address to show first 6 characters
+  const shortAddress = `${walletAddress.slice(0, 6)}...`;
 
   if (!isConnected) {
     return (
@@ -45,10 +49,15 @@ const WalletButton = () => {
           <div className="flex items-center space-x-2">
             <Avatar className="h-6 w-6">
               <AvatarImage src="/placeholder.svg" />
-              <AvatarFallback className="text-xs">0x</AvatarFallback>
+              <AvatarFallback className="text-xs bg-blue-100">
+                <User className="w-3 h-3 text-blue-600" />
+              </AvatarFallback>
             </Avatar>
             <div className="flex flex-col items-start">
-              <span className="text-sm font-medium">{walletAddress}</span>
+              <div className="flex items-center space-x-1">
+                <span className="text-sm font-medium">{username}</span>
+                <span className="text-xs text-muted-foreground">{shortAddress}</span>
+              </div>
               <span className="text-xs text-muted-foreground">{userBalance} ETH</span>
             </div>
           </div>
@@ -57,7 +66,7 @@ const WalletButton = () => {
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Connected Wallet</p>
+            <p className="text-sm font-medium leading-none">{username}</p>
             <p className="text-xs leading-none text-muted-foreground">
               {walletAddress}
             </p>
